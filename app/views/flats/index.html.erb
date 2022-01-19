@@ -1,0 +1,51 @@
+<br>
+<%= link_to "Simple Airbnb", flats_path %>
+<form class="form-inline">
+  <input type="form-control" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query]%>">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<%= link_to "Add flat", new_flat_path%>
+
+
+<div class="container mt-3">
+<div class="row">
+  <div class="col-12">
+    <h1>All our flats <%= "(#{@flats.length})" %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <p>All <%= @flats.length %> flats</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <div class="flat-card">
+      <div class="flat-card-image" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200'); height: 100px"></div>
+      <div>
+        <% @flats.each do |flat| %>
+        <div>
+          <div>
+            <h4><%= link_to flat.name, flat_path(flat) %></h4>
+            <p><%= flat.address %></p>
+          </div>
+            <div>
+              <span><%= flat.price_per_night %></span>
+            </div>
+            <div>
+              <span><%= flat.number_of_guests %></span>
+            </div>
+          <div>
+            <span><%= link_to "Edit", edit_flat_path(flat) %></span>
+            <span><%= link_to "Remove", flat_path(flat), method: :delete, data: {confirm: "Are you sure?"}%></span>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</div>

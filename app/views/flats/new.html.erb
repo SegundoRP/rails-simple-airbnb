@@ -1,0 +1,15 @@
+<br>
+<%= link_to "Simple Airbnb", flats_path %>
+<%= link_to "Add flat", new_flat_path%>
+
+<h1>Add a new flat</h1>
+
+<%= simple_form_for(Flat.new) do |t| %>
+  <%= t.input :name %>
+  <%= t.input :address %>
+  <%= t.input :description %>
+  <%= t.input :price_per_night %>
+  <%= t.input :number_of_guests %>
+  <%= t.submit "Create a flat" %>
+  <%= t.submit "Cancel" %>
+<% end %>
